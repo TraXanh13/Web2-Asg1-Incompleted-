@@ -28,8 +28,10 @@ table{
     text-align: center;
     justify-content: center;
     border-collapse: collapse;
+    border: 1px solid black;
     margin: 10px;
-    height: 50px;
+    height: 700px;
+    overflow-y: auto;
 }
 
 td, th {
@@ -59,9 +61,6 @@ label {
     font-size: x-large;
 }
 
-.responsive{
-    overflow-y: auto;
-}
 
 .container {
     display: grid;
