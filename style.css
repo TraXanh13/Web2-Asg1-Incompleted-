@@ -23,20 +23,25 @@ button:hover{
 }
 
 table{
-    display:flex;
+    display: flex;
     width: 100%;
+    table-layout: fixed;
     text-align: center;
     justify-content: center;
     border-collapse: collapse;
-    border: 1px solid black;
-    margin: 10px;
     height: 700px;
     overflow-y: auto;
+    margin: 10px;
+    border: 2px black solid;
 }
 
-td, th {
-    padding: 5px 30px;
-    border: 1px solid black;
+tr {
+    width: 100%;
+}
+
+th, td{
+    border-bottom: 2px black solid;
+    padding: 5px 5px;  
 }
 
 input {
@@ -53,12 +58,15 @@ label {
 } 
 
 /* Classes */
+.symbol{
+    border-right: 1px solid blue;
+}
 
 .centering{
     display: flex;
     justify-content: center;
     border: none;
-    font-size: x-large;
+    font-size: large;
 }
 
 
@@ -117,27 +125,41 @@ label {
 }
 
 @media only screen and (max-width: 1400px){
-.centering{
-        margin-left: 20px;
+    .centering{
+        margin-left: 10px;
         margin-right: 20px;
+        font-size: medium;
+    }
+
+    #labelF{
         font-size: large;
+    }
+
+}
+
+@media only screen and (max-width: 1200px){
+    .centering{
+        font-size: small;
     }
 }
 
 
-@media only screen and (max-width: 870px){
+@media only screen and (max-width: 1030px){
     input{
         width: 100%;
     }
+
     .centering{
-        margin-left: 20px;
-        margin-right: 20px;
         font-size: xx-large;
     }
 
     .container{
         grid-template-rows: repeat(15, 1fr);
     }   
+
+    #labelF{
+        font-size: xx-large;
+    }
 
     #listOfCompaneis {
         grid-column: 1/11;
