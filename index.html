@@ -7,21 +7,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>COMP 3512 Assign1</title>
-    
+
 </head>
 
 <body>
     <header>
         <h1>Header</h1>
     </header>
-    <div id="loader" class="lds-ring">
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-    </div>
+
     <main class="container">
-        <div id="listOfCompaneis">
+        <!-- View 1 -->
+        <div class="view1" id="listOfCompaneis">
             <h2>List of Companies</h2>
             <div class="centering inputField">
                 <div>
@@ -40,30 +36,114 @@
             </div>
             <br>
             <div class="centering">
+            <table id="head">
+                <tr>
+                    <th >Symbol</th>
+                    <th>name of company</th>
+                </tr>
+            </table>
+            </div>
+            <div class="centering">
+
                 <table id="companyTabel">
-                    <tr>
-                        <th class="symbol">Symbol</th>
-                        <th>name of company</th>
-                    </tr>
+                    <div id="loader1" class="centering lds-ring">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <tbody></tbody>
                 </table>
             </div>
         </div>
 
-        <div id="companyInfo">
+        <div class="view1" id="companyInfo">
             <h2>Company Info</h2>
+            <div class="section">
+                <div id="logo">
+
+                </div>
+                <div>
+                    <p class="sym"></p>
+                </div>
+                <div>
+                    <p class="name"> </p>
+                </div>
+                <div>
+                    <p id="sector"></p>
+                </div>
+            </div>
+            <div class="section">
+                <div>
+                    <p id="sub"></p>
+                </div>
+                <div>
+                    <p id="address"> </p>
+                </div>
+                <div><a id="website" href=""></a></div>
+            </div>
+            <div class="section">
+                <div>
+                    <p id="exhange"></p>
+                </div>
+                <div>
+                    <p id="desc"> </p>
+                </div>
+            </div>
         </div>
-        <div id="companyQuote">
+
+        <div class="view1" id="companyMap">
             <h2>Map</h2>
+            <div id="map"></div>
         </div>
-        <div id="monthStockData">
-            <h2 class="charts">Stock Data</h2>
-            <button class="charts" id="moreCharts">View Charts</button>
+        <div class="view1" id="monthStockData">
+            <h2 class="stockChart">Stock Data</h2>
+            <button class="stockChart" id="moreCharts">View Charts</button>
+            <div id="loader2" class="lds-ring">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <table class="sortable" id="head">
+                <tr>
+                    <th>Date</th>
+                    <th>Open</th>
+                    <th>Close</th>
+                    <th>High</th>
+                    <th>Low</th>
+                    <th>Volume Fields</th>
+                </tr>
+            </table>
+            <div class="centering">
+                <table id="stockTabel">
+                    <tbody>
+
+                    </tbody>
+                </table>
+            </div>
         </div>
-        <div id="monthStockDataAvg">
+        <div id="monthStockDataAvg" class="view1">
 
         </div>
+
+        <!-- View 2 -->
+        <div class="view2" id="charts"></div>
+        <div class="view2" id="compInfo">
+            <div>
+                <h2 class="name"></h2>
+                <h2 class="sym"></h2>
+                <p class="desc"></p>
+                <button id="speak">Speak</button>
+                <button class="centering" id="close">Close</button>
+            </div>
+        </div>
+        <div class="view2" id="financials"></div>
     </main>
     <script src="script.js"></script>
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-kOaxYYOLB4Ir7E4XKRSG7xBJCWUPSMc&callback=initMap"></script>
+        
 </body>
 
 </html>
