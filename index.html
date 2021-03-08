@@ -7,111 +7,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>COMP 3512 Assign1</title>
+    
 </head>
 
 <body>
     <header>
         <h1>Header</h1>
     </header>
+    <div id="loader" class="lds-ring">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
     <main class="container">
         <div id="listOfCompaneis">
             <h2>List of Companies</h2>
             <div class="centering inputField">
                 <div>
-                   <label for="filter" id="labelF">Filter:</label> 
+                    <label for="filter" id="labelF">Filter:</label>
                 </div>
                 <div>
-                   <input type="text" id="filter" placeholder="Enter a letter" maxlength="5"> 
+                    <input type="text" id="filter" placeholder="Enter a letter" maxlength="5">
                 </div>
-                
+
             </div>
 
             <br>
-            <div class="centering ">
+            <div class="centering">
                 <button id="goBtn">Go</button>
                 <button id="clearBtn">Clear</button>
             </div>
             <br>
             <div class="centering">
-                <table>
+                <table id="companyTabel">
                     <tr>
                         <th class="symbol">Symbol</th>
                         <th>name of company</th>
                     </tr>
-                    <tr>
-                        <td class="symbol">Sum</td>
-                        <td>AMAZON</td>
-                    </tr>
-                    <tr>
-                        <td class="symbol">Sum</td>
-                        <td>AMAZON</td>
-                    </tr>
-                    <tr>
-                        <td class="symbol">Sum</td>
-                        <td>AMAZON</td>
-                    </tr>
-                    <tr>
-                        <td class="symbol">Sum</td>
-                        <td>AMAZON</td>
-                    </tr>
-                    <tr>
-                        <td class="symbol">Sum</td>
-                        <td>AMAZON</td>
-                    </tr>
-                    <tr>
-                        <td class="symbol">Sum</td>
-                        <td>AMAZON</td>
-                    </tr>
-                    <tr>
-                        <td class="symbol">Sum</td>
-                        <td>AMAZON</td>
-                    </tr>
-                    <tr>
-                        <td class="symbol">Sum</td>
-                        <td>AMAZON</td>
-                    </tr>
-                    <tr>
-                        <td class="symbol">Sum</td>
-                        <td>AMAZON</td>
-                    </tr>
-                    <tr>
-                        <td class="symbol">Sum</td>
-                        <td>AMAZON</td>
-                    </tr>
-                    <tr>
-                        <td class="symbol">Sum</td>
-                        <td>AMAZON</td>
-                    </tr>
-                    <tr>
-                        <td class="symbol">Sum</td>
-                        <td>AMAZON</td>
-                    </tr>
-                    <tr>
-                        <td class="symbol">Sum</td>
-                        <td>AMAZON</td>
-                    </tr>
-                    <tr>
-                        <td class="symbol">Sum</td>
-                        <td>AMAZON</td>
-                    </tr>
-                    <tr>
-                        <td class="symbol">Sum</td>
-                        <td>AMAZON</td>
-                    </tr>
-                    <tr>
-                        <td class="symbol">Sum</td>
-                        <td>AMAZON</td>
-                    </tr>
-                    <tr>
-                        <td class="symbol">Sum</td>
-                        <td>AMAZON</td>
-                    </tr>
-                    <tr>
-                        <td class="symbol">Sum</td>
-                        <td>AMAZON</td>
-                    </tr>
                 </table>
-                
             </div>
         </div>
 
@@ -129,6 +63,7 @@
 
         </div>
     </main>
+    <script src="script.js"></script>
 </body>
 
 </html>
