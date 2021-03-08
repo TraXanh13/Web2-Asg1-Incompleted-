@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 })
         }
 
-        document.querySelector("#loader").style.visibility = "visible";
+        document.querySelector("#loader").style.visibility = "hidden";
         document.querySelector("main").style.visibility = "visible";
     }
 
