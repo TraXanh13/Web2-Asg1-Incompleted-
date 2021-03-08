@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const companyTbl = document.querySelector("#companyTabel tbody");
     const stockTbl = document.querySelector("#stockTabel tbody");
     const companiesAPI = "https://www.randyconnolly.com/funwebdev/3rd/api/stocks/companies.php";
-    const stockAPI = 'https://www.randyconnolly.com/funwebdev/3rd/api/stocks/history.php?symbol='
+    const stockAPI = 'https://www.randyconnolly.com/funwebdev/3rd/api/stocks/history.php?symbol=';
     //calling appropiate functions
     let companyCollection = retrieveStorage();
     fetchCompanies();
@@ -75,7 +75,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-
+    console.log(companyTbl);
     //event onclick
     const cells = document.querySelectorAll('td');
     cells.forEach(cell => {
@@ -170,7 +170,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     //event for seorting stock data
-    const sort = document.querySelectorAll(".sortable tr th");
+    const sort = document.querySelectorAll(".sortable thead tr th");
     sort.forEach(e => {
         e.addEventListener("click", () => {
             //i'm not a monster, don't judge me
@@ -185,7 +185,7 @@ document.addEventListener("DOMContentLoaded", function () {
         fetch(stockAPI + symbol)
             .then(resp => resp.json())
             .then(data => {
-                console.log(word);
+                console.log(data[0]);
                 console.log(data.sort((a,b) => {return a.word - b.word}));
                 
                 data.forEach(e => {

@@ -6,8 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <!-- Adding the echarts API -->
+    <script src="echarts.min.js"></script>
+    <script src="script.js"></script>
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-kOaxYYOLB4Ir7E4XKRSG7xBJCWUPSMc&callback=initMap"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@600&display=swap" rel="stylesheet">
     <title>COMP 3512 Assign1</title>
-
 </head>
 
 <body>
@@ -36,15 +42,6 @@
             </div>
             <br>
             <div class="centering">
-            <table id="head">
-                <tr>
-                    <th >Symbol</th>
-                    <th>name of company</th>
-                </tr>
-            </table>
-            </div>
-            <div class="centering">
-
                 <table id="companyTabel">
                     <div id="loader1" class="centering lds-ring">
                         <div></div>
@@ -52,7 +49,14 @@
                         <div></div>
                         <div></div>
                     </div>
-                    <tbody></tbody>
+                    <thead>
+                        <tr>
+                            <th>Symbol</th>
+                            <th>Name of Company</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
                 </table>
             </div>
         </div>
@@ -87,7 +91,7 @@
                     <p id="exhange"></p>
                 </div>
                 <div>
-                    <p id="desc"> </p>
+                    <p class="desc"> </p>
                 </div>
             </div>
         </div>
@@ -99,26 +103,26 @@
         <div class="view1" id="monthStockData">
             <h2 class="stockChart">Stock Data</h2>
             <button class="stockChart" id="moreCharts">View Charts</button>
-            <div id="loader2" class="lds-ring">
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-            </div>
-            <table class="sortable" id="head">
-                <tr>
-                    <th>Date</th>
-                    <th>Open</th>
-                    <th>Close</th>
-                    <th>High</th>
-                    <th>Low</th>
-                    <th>Volume Fields</th>
-                </tr>
-            </table>
-            <div class="centering">
-                <table id="stockTabel">
-                    <tbody>
 
+            <div class="centering">
+                <table class="sortable" id="stockTabel">
+                    <div id="loader2" class="lds-ring">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Open</th>
+                            <th>Close</th>
+                            <th>High</th>
+                            <th>Low</th>
+                            <th>Volume Fields</th>
+                        </tr>
+                    </thead>
+                    <tbody>
                     </tbody>
                 </table>
             </div>
@@ -128,7 +132,9 @@
         </div>
 
         <!-- View 2 -->
-        <div class="view2" id="charts"></div>
+        <div class="view2" id="charts">
+            <div id="bargraph"></div>
+        </div>
         <div class="view2" id="compInfo">
             <div>
                 <h2 class="name"></h2>
@@ -138,12 +144,8 @@
                 <button class="centering" id="close">Close</button>
             </div>
         </div>
-        <div class="view2" id="financials"></div>
+        <div class="view2" id="financials">123</div>
     </main>
-    <script src="script.js"></script>
-    <script
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-kOaxYYOLB4Ir7E4XKRSG7xBJCWUPSMc&callback=initMap"></script>
-        
 </body>
 
 </html>

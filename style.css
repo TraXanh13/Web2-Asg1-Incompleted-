@@ -1,5 +1,5 @@
 header {
-   background-color: grey; 
+    background-color: grey;
 }
 
 button {
@@ -8,38 +8,72 @@ button {
     background-color: #0067b3;
     color: white;
     font-size: 20px;
-    text: bold;
     border: 1px solid black;
 }
 
-button:hover{
+button:hover {
     cursor: pointer;
     background-color: #001a4b;
 }
 
-#stockTabel, #companyTabel{
-    display: flex;
-    width: 100%;
+#stockTabel, #companyTabel {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 0.9em;
+    display: block;
+    width: 95%;
     table-layout: auto;
     text-align: center;
     justify-content: center;
     border-collapse: collapse;
-    height: 700px;
-    overflow-y: scroll;
-    margin: 10px;
+    border-radius: 20px;
+    overflow: hidden;
+    overflow-y: auto;
+    box-shadow: 0 0 20px;
+    margin: 25px 0;
+    border-bottom: 20px solid #009879;
+    background-color: whitesmoke;
 }
 
-th, td{
-    width: 100vw;
-    padding: 5px 5px;  
+#companyTabel{
+    height: 650px;
 }
 
-#companyTabel tr td:hover{
+#stockTabel{
+    height: 550px;
+}
+
+thead tr th {
+    font-weight: bolder;
+    font-size: 1.2em;
+    position: sticky;
+    top: 0;
+    background-color: #009879;
+    color: #ffff;
+}
+
+tbody tr:nth-of-type(even){
+    background-color: #e4dede;
+}
+
+td { 
+    border-left: 1px solid gray;
+    border-bottom: 1px solid gray;
+    width: 1000px;
+    padding: 5px 5px;
+
+}
+
+th{
+    padding-top: 10px;
+    padding-bottom: 15px;
+}
+
+#companyTabel tr td:hover {
     color: red;
     cursor: pointer;
 }
 
-.sortable tr th:hover{
+.sortable tr th:hover {
     color: red;
     cursor: pointer;
 }
@@ -50,14 +84,15 @@ input {
     max-width: 100%;
     height: 75%;
 }
-  
+
 label {
     display: block;
     width: 100%;
     max-width: 100%;
-} 
+}
 
 /* Classes */
+
 .view1 {
     visibility: visible;
 }
@@ -67,18 +102,14 @@ label {
     background-color: grey;
 }
 
-tbody td{
-    border-right: 1px solid blue;
-}
-
-.centering{
+.centering {
     display: flex;
     justify-content: center;
     border: none;
     font-size: large;
 }
 
-.section{
+.section {
     margin-left: 10px;
     justify-content: left;
 }
@@ -89,7 +120,7 @@ tbody td{
     grid-template-columns: repeat(10, 1fr);
     grid-template-rows: repeat(5, 1fr);
     min-height: 92.5vh;
-    grid-gap:5px;
+    grid-gap: 5px;
 }
 
 .stockChart {
@@ -99,7 +130,7 @@ tbody td{
 
 /* IDs */
 
-#head{
+#head {
     padding-right: 20px;
 }
 
@@ -123,13 +154,12 @@ tbody td{
     background-color: green;
 }
 
-#logo img{
+#logo img {
     width: 100px;
     height: 50px;
-    
 }
 
-#logo{
+#logo {
     border: none;
 }
 
@@ -184,64 +214,58 @@ tbody td{
     grid-row: 3/6;
 }
 
-@media only screen and (max-width: 1400px){
-    .centering{
+#bargraph {
+    width: 30%;
+    height: 50%;
+}
+
+@media only screen and (max-width: 1400px) {
+    .centering {
         margin-left: 10px;
         margin-right: 20px;
         font-size: medium;
     }
-
-    #labelF{
+    #labelF {
         font-size: large;
     }
-
 }
 
-@media only screen and (max-width: 1200px){
-    .centering{
+@media only screen and (max-width: 1200px) {
+    .centering {
         font-size: small;
     }
 }
 
-
-@media only screen and (max-width: 1030px){
-    input{
+@media only screen and (max-width: 1030px) {
+    input {
         width: 100%;
     }
-
-    .centering{
+    .centering {
         font-size: xx-large;
     }
-
-    .container{
+    .container {
         grid-template-rows: repeat(15, 1fr);
-    }   
-
-    #labelF{
+    }
+    #labelF {
         font-size: xx-large;
     }
-
     #listOfCompaneis {
         grid-column: 1/11;
         grid-row: 1/6;
     }
-
-    #companyInfo{
+    #companyInfo {
         grid-column: 1/11;
         grid-row: 6/8;
     }
-
-    #companyMap{
+    #companyMap {
         grid-column: 1/11;
         grid-row: 8/11;
     }
-
-    #monthStockData{
+    #monthStockData {
         grid-column: 1/11;
         grid-row: 11/15;
     }
-    
-    #monthStockDataAvg{
+    #monthStockDataAvg {
         grid-column: 1/11;
         grid-row: 15/16;
     }
@@ -256,7 +280,8 @@ tbody td{
     width: 80px;
     height: 700px;
 }
-  .lds-ring div {
+
+.lds-ring div {
     box-sizing: border-box;
     display: block;
     position: absolute;
@@ -267,21 +292,25 @@ tbody td{
     border-radius: 50%;
     animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
     border-color: #c2dde6 transparent transparent transparent;
-  }
-  .lds-ring div:nth-child(1) {
+}
+
+.lds-ring div:nth-child(1) {
     animation-delay: -0.45s;
-  }
-  .lds-ring div:nth-child(2) {
+}
+
+.lds-ring div:nth-child(2) {
     animation-delay: -0.3s;
-  }
-  .lds-ring div:nth-child(3) {
+}
+
+.lds-ring div:nth-child(3) {
     animation-delay: -0.15s;
-  }
-  @keyframes lds-ring {
+}
+
+@keyframes lds-ring {
     0% {
-      transform: rotate(0deg);
+        transform: rotate(0deg);
     }
     100% {
-      transform: rotate(360deg);
+        transform: rotate(360deg);
     }
-  }
+}
