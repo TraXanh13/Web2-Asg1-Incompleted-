@@ -375,7 +375,7 @@ document.addEventListener("DOMContentLoaded", function () {
         speechSynthesis.speak(speech);
     });
 
-    // Simple bar graph from https://echarts.apache.org/en/tutorial.html#Get%20Started%20with%20ECharts%20in%205%20minutes
+    // Simple bar graph from https://echarts.apache.org/examples/en/editor.html?c=dataset-simple0
     let barGraph = echarts.init(document.querySelector("#bargraph"));
     var finan2017;
     var finan2018;
@@ -453,12 +453,6 @@ document.addEventListener("DOMContentLoaded", function () {
         },
         legend: {
             data: ['Close Value', 'Volume']
-        },
-        grid: {
-            left: '3%',
-            right: '4%',
-            bottom: '3%',
-            containLabel: true
         },
         xAxis: {
             type: 'category',
