@@ -7,23 +7,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <!-- Adding the echarts API -->
-    <script src="echarts.min.js"></script>
+    <script src="./API/echarts-5.0.2/dist/echarts.js"></script>
     <script src="script.js"></script>
-    <script
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-kOaxYYOLB4Ir7E4XKRSG7xBJCWUPSMc&callback=initMap"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@600&display=swap" rel="stylesheet">
     <title>COMP 3512 Assign1</title>
 </head>
 
 <body>
-    <header>
-        <h1>Header</h1>
+    <header class="borderBottom">
+        <h1>Credits</h1>
     </header>
 
     <main class="container">
         <!-- View 1 -->
-        <div class="view1" id="listOfCompaneis">
+        <div class="view1 borderRight" id="listOfCompaneis">
             <h2>List of Companies</h2>
             <div class="centering inputField">
                 <div>
@@ -43,7 +41,7 @@
             <br>
             <div class="centering">
                 <table id="companyTabel">
-                    <div id="loader1" class="centering lds-ring">
+                    <div id="loader1" class="centering lds-ring centerLoad">
                         <div></div>
                         <div></div>
                         <div></div>
@@ -61,7 +59,7 @@
             </div>
         </div>
 
-        <div class="view1" id="companyInfo">
+        <div class="view1 borderRight borderBottom" id="companyInfo">
             <h2>Company Info</h2>
             <div class="section">
                 <div id="logo">
@@ -96,17 +94,16 @@
             </div>
         </div>
 
-        <div class="view1" id="companyMap">
-            <h2>Map</h2>
+        <div class="view1 borderRight" id="companyMap">
             <div id="map"></div>
         </div>
-        <div class="view1" id="monthStockData">
+        <div class="view1 borderBottom" id="monthStockData">
             <h2 class="stockChart">Stock Data</h2>
             <button class="stockChart" id="moreCharts">View Charts</button>
 
             <div class="centering">
                 <table class="sortable" id="stockTabel">
-                    <div id="loader2" class="lds-ring">
+                    <div id="loader2" class="lds-ring centerLoad">
                         <div></div>
                         <div></div>
                         <div></div>
@@ -132,10 +129,12 @@
         </div>
 
         <!-- View 2 -->
-        <div class="view2" id="charts">
+        <div class="view2 borderRight" id="charts">
             <div id="bargraph"></div>
+            <div id="candleGraph"></div>
+            <div id="lineChart"></div>
         </div>
-        <div class="view2" id="compInfo">
+        <div class="view2 borderBottom" id="compInfo">
             <div>
                 <h2 class="name"></h2>
                 <h2 class="sym"></h2>
@@ -147,5 +146,6 @@
         <div class="view2" id="financials">123</div>
     </main>
 </body>
+<script   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-kOaxYYOLB4Ir7E4XKRSG7xBJCWUPSMc&callback=initMap"></script>
 
 </html>

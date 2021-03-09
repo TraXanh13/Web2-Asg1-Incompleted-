@@ -1,5 +1,5 @@
-header {
-    background-color: grey;
+h1{
+    text-align: center;
 }
 
 button {
@@ -30,7 +30,7 @@ button:hover {
     overflow-y: auto;
     box-shadow: 0 0 20px;
     margin: 25px 0;
-    border-bottom: 20px solid #009879;
+    border-bottom: 20px solid gray;
     background-color: whitesmoke;
 }
 
@@ -42,12 +42,17 @@ button:hover {
     height: 550px;
 }
 
+thead{
+    width: 100%;
+}
+
+
 thead tr th {
     font-weight: bolder;
     font-size: 1.2em;
     position: sticky;
     top: 0;
-    background-color: #009879;
+    background-color: gray;
     color: #ffff;
 }
 
@@ -66,6 +71,7 @@ td {
 th{
     padding-top: 10px;
     padding-bottom: 15px;
+    width:17%;
 }
 
 #companyTabel tr td:hover {
@@ -92,14 +98,20 @@ label {
 }
 
 /* Classes */
-
 .view1 {
     visibility: visible;
 }
 
 .view2 {
     visibility: hidden;
-    background-color: grey;
+}
+
+.borderRight {
+    border-right: 1px solid gray;
+}
+
+.borderBottom {
+    border-bottom: 1px solid gray;
 }
 
 .centering {
@@ -116,7 +128,7 @@ label {
 
 .container {
     display: grid;
-    margin-top: -15px;
+    
     grid-template-columns: repeat(10, 1fr);
     grid-template-rows: repeat(5, 1fr);
     min-height: 92.5vh;
@@ -126,6 +138,11 @@ label {
 .stockChart {
     display: inline-block;
     margin-top: 20px;
+}
+
+.centerLoad {
+    position: absolute;
+    top: 40%;
 }
 
 /* IDs */
@@ -145,13 +162,11 @@ label {
 #listOfCompaneis {
     grid-column: 1/3;
     grid-row: 1/6;
-    background-color: teal;
 }
 
 #companyInfo {
     grid-column: 3/6;
     grid-row: 1/4;
-    background-color: green;
 }
 
 #logo img {
@@ -163,18 +178,13 @@ label {
     border: none;
 }
 
-#loader1 {
-    position: absolute;
-    top: 50%;
-}
-
 #companyMap {
     grid-column: 3/6;
     grid-row: 4/6;
-    background-color: tomato;
 }
 
 #map {
+    top: 10%;
     margin: auto;
     height: 75%;
     width: 90%;
@@ -186,7 +196,6 @@ label {
     grid-row: 1/5;
     padding: 10px;
     display: inline-block;
-    background-color: turquoise;
 }
 
 #moreCharts {
@@ -196,7 +205,6 @@ label {
 #monthStockDataAvg {
     grid-column: 6/11;
     grid-row: 5/6;
-    background-color: yellowgreen;
 }
 
 #charts {
@@ -215,8 +223,21 @@ label {
 }
 
 #bargraph {
-    width: 30%;
-    height: 50%;
+    width: 300px;
+    height: 600px;
+    border: 1px solid black;
+}
+
+#candleGraph {
+    width: 300px;
+    height: 600px;
+    border: 1px solid black;
+}
+
+#lineChart {
+    width: 300px;
+    height: 600px;
+    border: 1px solid black;
 }
 
 @media only screen and (max-width: 1400px) {
