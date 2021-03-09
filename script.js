@@ -15,6 +15,10 @@ document.addEventListener("DOMContentLoaded", function () {
     fetchCompanies();
     populateCompanies();
 
+    // Showing the credits for 5 seconds
+    const creditView = document.querySelector("#credits");
+
+
     /* --------------- FUNCTIONS taken from ex11 ---------------------- */
 
 
@@ -74,14 +78,14 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    //event handling for the go value 
+    //event handling for the change in input 
 
     //event handling for clear btn
     document.querySelector("#clearBtn").addEventListener("click", () => {
         populateCompanies();
         document.querySelector("#filter").value = "";
     })
-    
+
     //event onclick
     const cells = document.querySelectorAll("#companyTabel tbody tr td");
     cells.forEach(cell => {
@@ -108,23 +112,25 @@ document.addEventListener("DOMContentLoaded", function () {
                 img.setAttribute("src", `./logos/${company.symbol}.svg`);
                 img.setAttribute("alt", `${company.symbol}.svg`);
                 document.querySelector("#logo").appendChild(img);
-                symbol.forEach(e => { e.textContent = company.symbol });
-                name.forEach(e => { e.textContent = company.name });
-                sector.textContent = company.sector;
-                subindustry.textContent = company.subindustry;
-                address.textContent = company.address;
+                symbol.forEach(e => { e.textContent = "Symbol: " + company.symbol });
+                name.forEach(e => { e.textContent = "Name: " + company.name });
+                sector.textContent = "Sector: " + company.sector;
+                subindustry.textContent = "Subindustry: " + company.subindustry;
+                address.textContent = "Address: " + company.address;
                 website.setAttribute("href", company.website);
                 website.textContent = company.website;
-                exchange.textContent = company.exchange;
-                desc.forEach(e => { e.textContent = company.description });
+                exchange.textContent = "Exchange: " + company.exchange;
+                desc.forEach(e => { e.textContent = "Description: " + company.description });
                 lat = company.latitude;
                 lng = company.longitude;
                 initMap();
                 populateStock(company.symbol);
-
+                setBarData(company.financials);
             }
         });
     }
+
+    //populates the smaller stock data
 
 
     //populate the stock data
@@ -134,6 +140,7 @@ document.addEventListener("DOMContentLoaded", function () {
         fetch(stockAPI + symbol)
             .then(resp => resp.json())
             .then(data => {
+
                 data.forEach(e => {
                     let date = document.createElement("td");
                     let open = document.createElement("td");
@@ -159,9 +166,152 @@ document.addEventListener("DOMContentLoaded", function () {
                     stockTbl.appendChild(row);
                 });
                 document.querySelector("#loader2").style.visibility = "hidden";
+                populateAverage(data);
+                populateMin(data);
+                populateMax(data);
+
             })
     }
 
+    //
+    function populateAverage(data) {
+
+        document.querySelector("#avg").innerHTML = "";
+        let openAvg = 0;
+        let closeAvg = 0;
+        let highAvg = 0;
+        let lowAvg = 0;
+        let volumneAvg = 0;
+        let open = document.createElement("td");
+        let close = document.createElement("td");
+        let high = document.createElement("td");
+        let low = document.createElement("td");
+        let volumeFields = document.createElement("td");
+        let th = document.createElement("th");
+        th.textContent = "Average";
+        document.querySelector("#avg").appendChild(th);
+
+        for (let index = 0; index < data.length; index++) {
+            const e = data[index];
+            openAvg += Number(parseFloat(e.open).toFixed(2));
+            closeAvg += Number(parseFloat(e.close).toFixed(2));
+            highAvg += Number(parseFloat(e.high).toFixed(2));
+            lowAvg += Number(parseFloat(e.low).toFixed(2));
+            volumneAvg += Number(parseInt(e.volume));
+        }
+        open.textContent = "$" + (openAvg / data.length).toFixed(2);
+        close.textContent = "$" + (closeAvg / data.length).toFixed(2);
+        high.textContent = "$" + (highAvg / data.length).toFixed(2);
+        low.textContent = "$" + (lowAvg / data.length).toFixed(2);
+        volumeFields.textContent = (volumneAvg / data.length).toFixed(2);
+
+
+        document.querySelector("#avg").appendChild(open);
+        document.querySelector("#avg").appendChild(close);
+        document.querySelector("#avg").appendChild(high);
+        document.querySelector("#avg").appendChild(low);
+        document.querySelector("#avg").appendChild(volumeFields);
+    }
+
+    function populateMin(data) {
+
+        document.querySelector("#min").innerHTML = "";
+        let openMin = 9999999;
+        let closeMin = 9999999;
+        let highMin = 9999999;
+        let lowMin = 9999999; 
+        let volumneMin = 9999999;
+        let open = document.createElement("td");
+        let close = document.createElement("td");
+        let high = document.createElement("td");
+        let low = document.createElement("td");
+        let volumeFields = document.createElement("td");
+        let th = document.createElement("th");
+        th.textContent = "Minimum";
+        document.querySelector("#min").appendChild(th);
+
+        for (let index = 0; index < data.length; index++) {
+            const e = data[index];
+            if(openMin > Number(parseFloat(e.open))) {
+                openMin = Number(parseFloat(e.open));
+            }
+            if(closeMin > Number(parseFloat(e.close))){
+                closeMin = Number(parseFloat(e.close));
+            }
+            if(highMin > Number(parseFloat(e.high))) {
+                highMin = Number(parseFloat(e.high));
+            }
+            if(lowMin > Number(parseFloat(e.low))) {
+                lowMin = Number(parseFloat(e.low));
+            }
+
+            if(volumneMin > Number(parseInt(e.volume))){
+                volumneMin = Number(parseInt(e.volume));
+            }
+        }
+        open.textContent = "$" + openMin.toFixed(2);
+        close.textContent = "$" + closeMin.toFixed(2);
+        high.textContent = "$" + highMin.toFixed(2);
+        low.textContent = "$" + lowMin.toFixed(2);
+        volumeFields.textContent = volumneMin;
+
+
+        document.querySelector("#min").appendChild(open);
+        document.querySelector("#min").appendChild(close);
+        document.querySelector("#min").appendChild(high);
+        document.querySelector("#min").appendChild(low);
+        document.querySelector("#min").appendChild(volumeFields);
+    }
+
+    function populateMax(data) {
+
+        document.querySelector("#max").innerHTML = "";
+        let openMax = 0;
+        let closeMax = 0;
+        let highMax = 0;
+        let lowMax = 0; 
+        let volumneMax = 0;
+        let open = document.createElement("td");
+        let close = document.createElement("td");
+        let high = document.createElement("td");
+        let low = document.createElement("td");
+        let volumeFields = document.createElement("td");
+        let th = document.createElement("th");
+        th.textContent = "Maximum";
+        document.querySelector("#max").appendChild(th);
+
+        for (let index = 0; index < data.length; index++) {
+            const e = data[index];
+            if(openMax < Number(parseFloat(e.open))) {
+                openMax = Number(parseFloat(e.open));
+            }
+            if(closeMax < Number(parseFloat(e.close))){
+                closeMax = Number(parseFloat(e.close));
+            }
+            if(highMax < Number(parseFloat(e.high))) {
+                highMax = Number(parseFloat(e.high));
+            }
+            if(lowMax < Number(parseFloat(e.low))) {
+                lowMax = Number(parseFloat(e.low));
+            }
+
+            if(volumneMax < Number(parseInt(e.volume))){
+                volumneMax = Number(parseInt(e.volume));
+            }
+        }
+        open.textContent = "$" + openMax.toFixed(2);
+        close.textContent = "$" + closeMax.toFixed(2);
+        high.textContent = "$" + highMax.toFixed(2);
+        low.textContent = "$" + lowMax.toFixed(2);
+        volumeFields.textContent = volumneMax;
+
+
+        document.querySelector("#max").appendChild(open);
+        document.querySelector("#max").appendChild(close);
+        document.querySelector("#max").appendChild(high);
+        document.querySelector("#max").appendChild(low);
+        document.querySelector("#max").appendChild(volumeFields);
+    }
     // Changing the view on the button press
     let chartBtn = document.querySelector("#moreCharts");
     chartBtn.addEventListener("click", () => {
@@ -221,32 +371,47 @@ document.addEventListener("DOMContentLoaded", function () {
         ctx += " " + document.querySelector(".desc").textContent;
 
         let speech = new SpeechSynthesisUtterance(ctx);
+
+        speechSynthesis.speak(speech);
     });
 
     // Simple bar graph from https://echarts.apache.org/en/tutorial.html#Get%20Started%20with%20ECharts%20in%205%20minutes
     let barGraph = echarts.init(document.querySelector("#bargraph"));
+    var finan2017;
+    var finan2018;
+    var finan2019;
+
+    // Set the arrays for each financial year
+    function setBarData(company) {
+        console.log(company);
+        // Year, Asset, Earning, Liabilities, revenue
+        finan2017 = [company.years[2], company.assets[2], company.earnings[2], company.liabilities[2], company.revenue[2]];
+        finan2018 = [company.years[1], company.assets[1], company.earnings[1], company.liabilities[1], company.revenue[1]];
+        finan2019 = [company.years[0], company.assets[0], company.earnings[0], company.liabilities[0], company.revenue[0]];
+    }
 
     let barGraphSetting = {
-        title: {
-            text: "Fuck you"
-        },
         legend: {
             data: ["Revenue", "Earnings", "Assets", "Liabilities"]
         },
         dataset: {
             source: [
                 ["Thing", "Revenue", "Earnings", "Assets", "Liabilities"],
-                ["test 1", 1, 2, 3, 4],
+                /*
+                [finan2017[0], finan2017[4], finan2017[2], finan2017[1], finan2017[3]],
+                [finan2018[0], finan2018[4], finan2018[2], finan2018[1], finan2018[3]],
+                [finan2019[0], finan2019[4], finan2019[2], finan2019[1], finan2019[3]],
+                */
                 ["test 2", 2, 4, 1, 3]
             ]
         },
-        xAxis: {type: 'category'},
+        xAxis: { type: 'category' },
         yAxis: {},
         series: [
-            {type:"bar"},
-            {type:"bar"},
-            {type:"bar"},
-            {type:"bar"}
+            { type: "bar" },
+            { type: "bar" },
+            { type: "bar" },
+            { type: "bar" }
         ]
     };
 
@@ -281,13 +446,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
     let lineSettings = {
         title: {
-            text: '折线图堆叠'
+            text: 'Close value and Volume Graph'
         },
         tooltip: {
             trigger: 'axis'
         },
         legend: {
-            data: ['邮件营销', '联盟广告', '视频广告', '直接访问', '搜索引擎']
+            data: ['Close Value', 'Volume']
         },
         grid: {
             left: '3%',
@@ -298,35 +463,20 @@ document.addEventListener("DOMContentLoaded", function () {
         xAxis: {
             type: 'category',
             boundaryGap: false,
-            data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+            data: ["1", "2", "3"]
         },
         yAxis: {},
         series: [
             {
-                name: '邮件营销',
+                name: 'Close Value',
                 type: 'line',
                 data: [120, 132, 101, 134, 90, 230, 210]
             },
             {
-                name: '联盟广告',
+                name: 'Volume',
                 type: 'line',
                 data: [220, 182, 191, 234, 290, 330, 310]
             },
-            {
-                name: '视频广告',
-                type: 'line',
-                data: [150, 232, 201, 154, 190, 330, 410]
-            },
-            {
-                name: '直接访问',
-                type: 'line',
-                data: [320, 332, 301, 334, 390, 330, 320]
-            },
-            {
-                name: '搜索引擎',
-                type: 'line',
-                data: [820, 932, 901, 934, 1290, 1330, 1320]
-            }
         ]
     };
 

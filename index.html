@@ -16,13 +16,25 @@
 
 <body>
     <header class="borderBottom">
-        <h1>Credits</h1>
+        <h1 class="centering" id ="hoverThingy">Credits</h1>
+        <div id="credits">
+            <p>Kyle Duong, Muhammad Tararr</p>
+            <p>COMP 3512-001</p>
+            <p>We had used Googles "Map Javascript API" from the Google Cloud Plateform</p>
+            <p>echarts.js to create the graphs and charts (https://echarts.apache.org/en/index.html).</p>
+            <p>The bar graph used:https://echarts.apache.org/en/tutorial.html#Get%20Started%20with%20ECharts%20in%205%20minutes</p>
+            <p>The candle graph used:https://echarts.apache.org/examples/en/editor.html?c=candlestick-simple </p>
+            <p>And the line grap used: https://echarts.apache.org/examples/en/editor.html?c=line-stack </p>
+        </div>
     </header>
+
+
 
     <main class="container">
         <!-- View 1 -->
         <div class="view1 borderRight" id="listOfCompaneis">
             <h2>List of Companies</h2>
+
             <div class="centering inputField">
                 <div>
                     <label for="filter" id="labelF">Filter:</label>
@@ -125,7 +137,29 @@
             </div>
         </div>
         <div id="monthStockDataAvg" class="view1">
+            <div class="centering">
+                <table id="calcTbl">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Open</th>
+                            <th>Close</th>
+                            <th>High</th>
+                            <th>Low</th>
+                            <th>Volume Fields</th>
+                        </tr>
+                    </thead>
 
+                    <tbody>
+                        <tr id="avg">
+                        </tr>
+                        <tr id="min">
+                        </tr>
+                        <tr id="max">
+                        </tr>
+                </table>
+            </div>
+        </div>
         </div>
 
         <!-- View 2 -->
@@ -146,6 +180,7 @@
         <div class="view2" id="financials">123</div>
     </main>
 </body>
-<script   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-kOaxYYOLB4Ir7E4XKRSG7xBJCWUPSMc&callback=initMap"></script>
+<script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-kOaxYYOLB4Ir7E4XKRSG7xBJCWUPSMc&callback=initMap"></script>
 
 </html>

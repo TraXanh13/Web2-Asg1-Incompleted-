@@ -2,6 +2,10 @@ h1{
     text-align: center;
 }
 
+body{
+    border: 1px solid black;
+}
+
 button {
     text-align: center;
     border-radius: 7px;
@@ -16,7 +20,7 @@ button:hover {
     background-color: #001a4b;
 }
 
-#stockTabel, #companyTabel {
+#stockTabel, #companyTabel, #calcTbl {
     font-family: 'Quicksand', sans-serif;
     font-size: 0.9em;
     display: block;
@@ -128,10 +132,9 @@ label {
 
 .container {
     display: grid;
-    
     grid-template-columns: repeat(10, 1fr);
     grid-template-rows: repeat(5, 1fr);
-    min-height: 92.5vh;
+    height: 910px;
     grid-gap: 5px;
 }
 
@@ -145,7 +148,9 @@ label {
     top: 40%;
 }
 
+
 /* IDs */
+
 
 #head {
     padding-right: 20px;
@@ -162,15 +167,17 @@ label {
 #listOfCompaneis {
     grid-column: 1/3;
     grid-row: 1/6;
+    padding: 10px;
 }
 
 #companyInfo {
     grid-column: 3/6;
     grid-row: 1/4;
+    padding: 10px;
 }
 
 #logo img {
-    width: 100px;
+    width: auto;
     height: 50px;
 }
 
@@ -181,6 +188,7 @@ label {
 #companyMap {
     grid-column: 3/6;
     grid-row: 4/6;
+    padding: 10px;
 }
 
 #map {
@@ -205,6 +213,7 @@ label {
 #monthStockDataAvg {
     grid-column: 6/11;
     grid-row: 5/6;
+    padding: 10px;
 }
 
 #charts {
